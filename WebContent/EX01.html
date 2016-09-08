@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 	
-<title>Clean Blog</title>
+<title>5조 Blog</title>
 
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -113,6 +113,15 @@
                 $('#pile').height($('#source_image').height());
                 $('#source_image').snapPuzzle('refresh');
             });
+            
+            $('#login').click(function(){
+           	 var windowW = 500;  // 창의 가로 길이
+                var windowH = 500;  // 창의 세로 길이
+                var left = Math.ceil((window.screen.width - windowW)/2);
+                var top = Math.ceil((window.screen.height - windowH)/2);
+        		 window.open("login.html","pop_01","l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+        		 
+           });
         });
         
         })(jQuery);
@@ -125,8 +134,10 @@
                 <iframe style="float:left;margin-right:15px" src="//ghbtns.com/github-btn.html?user=Pixabay&repo=jQuery-snapPuzzle&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>\
             ');
         }
+        
     </script>
- 
+    
+ 		
 
 </head>
 
@@ -148,11 +159,11 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="index.html">Home</a></li>
+					<li><a href="EX01.html">Home</a></li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="KimDragon.html">Sample Post</a></li>
 					<li><a href="Media.html">Media</a></li>
-					<li><a href="login.html">Login</a></li>
+					<li><a href="#" id="login">Login</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -203,7 +214,6 @@
 	</div>
 	
 	<hr>
-	
 	<!-- Main Content -->
 	<div class="container">
 		<div class="row">
