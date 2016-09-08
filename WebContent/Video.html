@@ -4,121 +4,177 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	window.onload = function() {
-		var player = document.getElementById("player");
-		var load = document.getElementById("load");
-		var play = document.getElementById("play")
-		var pause = document.getElementById("pause");
+   window.onload = function() {
+      var nowSrc = "medias/9MUSES.mp4";
+      var player = document.getElementById("player");
+      var source = document.getElementById("source");
+      var load = document.getElementById("load");
+      var play = document.getElementById("play")
+      var pause = document.getElementById("pause");
 
-		load.onclick = function() {
-			alert(player.canPlayType('video/mp4' + ';codecs="' + 'avc1.42E01E, mp4a.40.2' + '"'))
-			player.load();
-		}
-		play.onclick = function() {
-			player.play();
-		}
-		pause.onclick = function() {
-			player.pause();
-		}
+      load.onclick = function() {
+         alert(player.canPlayType('video/mp4' + ';codecs="' + 'avc1.42E01E, mp4a.40.2' + '"'))
+         player.load();
+      }
+      play.onclick = function() {
+         player.play();
+      }
+      pause.onclick = function() {
+         player.pause();
+      }
 
-		var mute = document.getElementById("mute");
-		var controls = document.getElementById("controls");
-		var fast = document.getElementById("fast");
-		var slow = document.getElementById("slow");
-		var vUp = document.getElementById("volumeUp");
-		var vDown = document.getElementById("volumeDown");
+      var mute = document.getElementById("mute");
+      var controls = document.getElementById("controls");
+      var fast = document.getElementById("fast");
+      var slow = document.getElementById("slow");
+      var vUp = document.getElementById("volumeUp");
+      var vDown = document.getElementById("volumeDown");
 
-		mute.onclick = function() {
-			if (player.muted) {
-				player.muted = false;
-			} else {
-				player.muted = true;
-			}
-		}
-		controls.onclick = function() {
-			if (player.hasAttribute("controls")) {
-				player.removeAttribute("controls");
-			} else {
-				player.setAttribute("controls", "controls");
-			}
-		}
-		fast.onclick = function() {
-			if(player.playbackRate!=5.0){
-				player.playbackRate=5.0
-			}else{
-				player.playbackRate=1.0
-			}
-		}
-		slow.onclick = function() {
-			if(player.playbackRate!=0.3){
-				player.playbackRate=0.3
-			}else{
-				player.playbackRate=1.0
-			}
-		}
-		vUp.onclick= function(){
-			if(player.volume<1.0)player.volume+=0.1;
-		}
-		vDown.onclick= function(){
-			if(player.volume>0)player.volume-=0.1;
-		}
-		player.addEventListener("ended", function(e) {
-			alert("재생종료! 중간부터 재생");
-			player.currentTime=126;
-			player.play();
-		});
-	}
+      mute.onclick = function() {
+         if (player.muted) {
+            player.muted = false;
+         } else {
+            player.muted = true;
+         }
+      }
+      controls.onclick = function() {
+         if (player.hasAttribute("controls")) {
+            player.removeAttribute("controls");
+         } else {
+            player.setAttribute("controls", "controls");
+         }
+      }
+      fast.onclick = function() {
+         if (player.playbackRate != 5.0) {
+            player.playbackRate = 5.0
+         } else {
+            player.playbackRate = 1.0
+         }
+      }
+      slow.onclick = function() {
+         if (player.playbackRate != 0.3) {
+            player.playbackRate = 0.3
+         } else {
+            player.playbackRate = 1.0
+         }
+      }
+      vUp.onclick = function() {
+         if (player.volume < 1.0)
+            player.volume += 0.1;
+      }
+      vDown.onclick = function() {
+         if (player.volume > 0)
+            player.volume -= 0.1;
+      }
+      var list = document.getElementsByTagName("a");
+
+      for (var i = 0; i < list.length; i++) {
+         list[i].onclick = function() {
+             event.preventDefault(); //링크를 아예 먹히지 않게 만들었던 부분!
+                                     //event.preventDefault();이벤트 결과가 수행되기전에 차단한다
+            if (this.getAttribute("class") == "play") player.load();else {
+               nowSrc = this.getAttribute("href");
+               source.setAttribute("src", nowSrc);
+               player.load();
+               changeSelected();
+               listFontChange();
+            }
+         }
+      }
+
+      function changeSelected() {
+         for (var i = 0; i < list.length; i++) {
+            if (nowSrc == list[i].getAttribute("href")) {
+               list[i].setAttribute("class", "play");
+            } else {
+               list[i].setAttribute("class", "ready");
+            }
+         }
+         
+      }
+      player.addEventListener("ended", function(e) {
+         var nextNum;
+         for (var i = 0; i < list.length; i++) {
+            if (list[i].getAttribute("class") == "play") {
+               if (i == list.length - 1) {
+                  nextNum = 0;
+               } else {
+                  nextNum = i + 1;
+               }
+            }
+         }
+         nowSrc = list[nextNum].getAttribute("href");
+         source.setAttribute("src", nowSrc);
+         player.load();
+         changeSelected();
+         listFontChange();
+      });
+
+      function listFontChange() {
+         for (var i = 0; i < list.length; i++) {
+            if ("play" == list[i].getAttribute("class")) {
+               list[i].setAttribute("style", "text-decoration: underline;");
+            } else {
+               list[i].setAttribute("style", "text-decoration: none;");
+            }
+         }
+      }
+      listFontChange();
+   }
 </script>
 <style type="text/css">
 
-video,table{
-margin: 0px;
-border: 0px;
-padding:0px;
+
+a {
+   text-decoration: underline;
 }
 
 table, td, tr, th {
-	text-align: center;
-	border: 1px solid black;
-	border-collapse: collapse;
-	border: 1px solid black;
-
+   text-align: center;
+   border: 1px solid black;
+   border-collapse: collapse;
+   border: 1px solid black;
 }
 </style>
 </head>
 <body>
-	
-	<video id="player" width="300px" height="" autoplay>
-		<source src="medias/9MUSES.mp4" type="video/mp4">	
-	</video>
-	
-		<br>
-		<table id="btns" style="width: 300px">
-			<tr>
-				<th colspan="3">Buttons</th>
-			</tr>
-			<tr>
-				<td colspan="3">Method</td>
-			</tr>
-			<tr>
-				<td><input type="button" value="load" id="load" ></td>
-				<td><input type="button" value="play" id="play"></td>
-				<td><input type="button" value="pause" id="pause"></td>
-			</tr>
-			<tr>
-				<td colspan="3">propertiesApproach</td>
-			</tr>
-			<tr>
-				<td><input type="button" value="mute" id="mute"></td>
-				<td><input type="button" value="controls" id="controls"></td>
-				<td><input type="button" value="volumeUp" id="volumeUp"></td>
-			</tr>
-			<tr>
-				<td><input type="button" value="fast" id="fast"></td>
-				<td><input type="button" value="slow" id="slow"></td>
-				<td><input type="button" value="volumeDown" id="volumeDown"></td>
-			</tr>
-		</table>
-	
+   <video id="player" width="300" height="250" autoplay>
+      <source id="source" src="medias/9MUSES.mp4" type="video/mp4">
+   </video>
+   <div>
+      <table id="btns" style="width: 300px">
+         <tr>
+            <th colspan="3">Buttons</th>
+         </tr>
+         <tr>
+            <td colspan="3">Method</td>
+         </tr>
+         <tr>
+            <td><input type="button" value="load" id="load"></td>
+            <td><input type="button" value="play" id="play"></td>
+            <td><input type="button" value="pause" id="pause"></td>
+         </tr>
+         <tr>
+            <td colspan="3">propertiesApproach</td>
+         </tr>
+         <tr>
+            <td><input type="button" value="mute" id="mute"></td>
+            <td><input type="button" value="controls" id="controls"></td>
+            <td><input type="button" value="volumeUp" id="volumeUp"></td>
+         </tr>
+         <tr>
+            <td><input type="button" value="fast" id="fast"></td>
+            <td><input type="button" value="slow" id="slow"></td>
+            <td><input type="button" value="volumeDown" id="volumeDown"></td>
+         </tr>
+      </table>
+   </div>
+   <div>
+      <ul>
+         <li><a href="medias/9MUSES.mp4" class="play">9MUSES.mp4</a></li>
+         <li><a href="medias/GFRIEND.mp4" class="ready">GFRIEND.mp4</a></li>
+         <li><a href="medias/PRODUCE 101.mp4" class="ready">PRODUCE101.mp4</a></li>
+      </ul>
+   </div>
 </body>
 </html>
