@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+	
+<title>Clean Blog</title>
+
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/clean-blog.min.css" rel="stylesheet">
+
+<link
+	href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic'
+	rel='stylesheet' type='text/css'>
+<link
+	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+	rel='stylesheet' type='text/css'>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300">
+<link rel="stylesheet"
+	href="https://cdn.rawgit.com/yahoo/pure-release/v0.6.0/pure-min.css">
+<link rel="stylesheet"
+	href="https://cdn.rawgit.com/yahoo/pure-release/v0.6.0/grids-responsive-min.css">
+<style>
+.snappuzzle-wrap {
+	position: relative;
+	display: block;
+}
+
+.snappuzzle-pile {
+	position: relative;
+}
+
+.snappuzzle-piece {
+	cursor: move;
+}
+
+.snappuzzle-slot {
+	position: absolute;
+	background: #fff;
+	opacity: .8;
+}
+
+.snappuzzle-slot-hover {
+	background: #eee;
+}
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="jquery/jquery.snap-puzzle.min.js"></script>
+<script>
+        // jQuery UI Touch Punch 0.2.3 - must load after jQuery UI
+        // enables touch support for jQuery UI
+        !function(a){function f(a,b){if(!(a.originalEvent.touches.length>1)){a.preventDefault();
+       
+        var c=a.originalEvent.changedTouches[0],
+        	d=document.createEvent("MouseEvents");
+        	d.initMouseEvent(b,!0,!0,window,1,c.screenX,c.screenY,c.clientX,c.clientY,!1,!1,!1,!1,0,null),
+        	a.target.dispatchEvent(d)}}
+       
+        if(a.support.touch="ontouchend"in document,a.support.touch)
+        {var e,b=a.ui.mouse.prototype,c=b._mouseInit,d=b._mouseDestroy;
+        b._touchStart=function(a){var b=this;!e&&b._mouseCapture(a.originalEvent.changedTouches[0])
+        &&(e=!0,b._touchMoved=!1,f(a,"mouseover"),f(a,"mousemove"),f(a,"mousedown"))}
+        ,b._touchMove=function(a){e&&(this._touchMoved=!0,f(a,"mousemove"))},
+        b._touchEnd=function(a){e&&(f(a,"mouseup"),f(a,"mouseout"),
+        this._touchMoved||f(a,"click"),e=!1)},
+        b._mouseInit=function(){var b=this;b.element.bind({touchstart:a.proxy(b,"_touchStart"),
+        touchmove:a.proxy(b,"_touchMove"),touchend:a.proxy(b,"_touchEnd")}),c.call(b)},
+        b._mouseDestroy=function(){var b=this;b.element.unbind({touchstart:a.proxy(b,"_touchStart"),
+        touchmove:a.proxy(b,"_touchMove"),touchend:a.proxy(b,"_touchEnd")}),d.call(b)}}}(jQuery);
+      
+        (function($){
+        function start_puzzle(x){
+            $('#puzzle_solved').hide();
+            $('#source_image').snapPuzzle({
+                rows: x, columns: x,
+                pile: '#pile',
+                containment: '#puzzle-containment',
+                onComplete: function(){
+                    $('#source_image').fadeOut(150).fadeIn();
+                    $('#puzzle_solved').show();
+                }
+            });
+        }
+
+        $(function(){
+            $('#pile').height($('#source_image').height());
+            start_puzzle(3);
+
+            $('.restart-puzzle').click(function(){
+                $('#source_image').snapPuzzle('destroy');
+                start_puzzle($(this).data('grid'));
+            });
+
+            $(window).resize(function(){
+                $('#pile').height($('#source_image').height());
+                $('#source_image').snapPuzzle('refresh');
+            });
+        });
+        
+        })(jQuery);
+        if (~window.location.href.indexOf('http')) {
+            (function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();
+            (function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=114593902037957";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+            $('#github_social').html('\
+                <iframe style="float:left;margin-right:15px" src="//ghbtns.com/github-btn.html?user=Pixabay&repo=jQuery-snapPuzzle&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>\
+                <iframe style="float:left;margin-right:15px" src="//ghbtns.com/github-btn.html?user=Pixabay&repo=jQuery-snapPuzzle&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>\
+            ');
+        }
+    </script>
+ 
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header page-scroll">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> 
+				   Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="EX01.html">5조</a>
+            </div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="KimDragon.html">Sample Post</a></li>
+					<li><a href="Media.html">Media</a></li>
+					<li><a href="login.html">Login</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<!-- Page Header -->
+	<!-- Set your background image for this header on the line below. -->
+	<header class="intro-header"
+		style="background-image: url('images/1.jpg')">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+					<div class="site-heading">
+						<h1>5th</h1>
+						<hr class="small">
+						<span class="subheading">과제저장소</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+
+	<div id="puzzle-containment"
+		style="border-top: 1px solid #eee; border-bottom: 1px solid #eee; background: #fafafa; margin: 30px 0; padding: 10px; text-align: center">
+		<div class="pure-g" style="max-width: 1280px; margin: auto">
+			<div class="pure-u-1 pure-u-md-1-2">
+				<div style="margin: 10px">
+					<img id="source_image" class="pure-img" src="images/1.jpg">
+				</div>
+			</div>
+			<div class="pure-u-1 pure-u-md-1-2">
+				<div id="pile" style="margin: 10px">
+					<div id="puzzle_solved"
+						style="display: none; text-align: center; position: relative; top: 25%">
+						<h2 style="margin: 0 0 20px">Well done!</h2>
+						<a class="pure-button button-lg restart-puzzle" data-grid="3">Restart
+							Puzzle</a> <br>
+						<br> <a href="#" class="restart-puzzle" data-grid="5">5x5</a>
+						&nbsp; <a href="#" class="restart-puzzle" data-grid="7">7x7</a>
+						&nbsp; <a href="#" class="restart-puzzle" data-grid="10">10x10</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<hr>
+	
+	<!-- Main Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<div class="post-preview">
+					<a href="Joonho.html">
+						<h2 class="post-title">최준호</h2>
+						<h3 class="post-subtitle">Problems look mighty small from 150
+							miles up</h3>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+	<!-- Main Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<div class="post-preview">
+					<a href="jihyeon.html">
+						<h2 class="post-title">김지현</h2>
+						<h3 class="post-subtitle">Problems look mighty small from 150
+							miles up</h3>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+	<!-- Main Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<div class="post-preview">
+					<a href="seungAH.html">
+						<h2 class="post-title">백승아</h2>
+						<h3 class="post-subtitle">Problems look mighty small from 150
+							miles up</h3>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+	<!-- Main Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<div class="post-preview">
+					<a href="soohyeon.html">
+						<h2 class="post-title">김수현</h2>
+						<h3 class="post-subtitle">Problems look mighty small from 150
+							miles up</h3>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<div class="post-preview">
+					<a href="KimDragon.html">
+						<h2 class="post-title">김용현</h2>
+						<h3 class="post-subtitle">Problems look mighty small from 150
+							miles up</h3>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+	
+
+	<!-- Footer -->
+	<footer>
+	
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+					<ul class="list-inline text-center">
+						<li><a href="#"> <span class="fa-stack fa-lg"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+							</span>
+						</a></li>
+						<li><a href="#"> <span class="fa-stack fa-lg"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+							</span>
+						</a></li>
+						<li><a href="#"> <span class="fa-stack fa-lg"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-github fa-stack-1x fa-inverse"></i>
+							</span>
+						</a></li>
+						
+					</ul>
+					<p class="copyright text-muted">Copyright &copy; Your Website
+						2016
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- jQuery -->
+	<script src="jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="jquery/bootstrap.min.js"></script>
+
+	<!-- Contact Form JavaScript -->
+	<script src="jquery/jqBootstrapValidation.js"></script>
+	<script src="jquery/contact_me.js"></script>
+
+	<!-- Theme JavaScript -->
+	<script src="jquery/clean-blog.min.js"></script>
+
+</body>
+
+</html>

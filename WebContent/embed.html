@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		var condition = "Video"
+		var Audio = document.getElementById("Audio");
+		var Video = document.getElementById("Video");
+		var player = document.getElementById("player");
+
+		Audio.onclick = function() {
+
+			if (condition != "Audio") {
+
+				ChangeEmbed("medias/9MUSES2.mp3");
+				condition = "Audio";
+			}
+		}
+		Video.onclick = function() {
+
+			if (condition != "Video") {
+				ChangeEmbed("medias/9MUSES.mp4");
+				condition = "Video";
+			}
+		}
+		function ChangeEmbed(url) {
+			while (player.hasChildNodes()) {
+				player.removeChild(player.firstChild);
+			}
+			var embed = document.createElement("embed");
+			embed.setAttribute("src", url);
+			embed.setAttribute("width", "400px");
+			embed.setAttribute("height", "300px");
+			player.appendChild(embed);
+
+		}
+	}
+</script>
+</head>
+<body>
+	<div id="player">
+		<embed src="medias/9MUSES.mp4" width="400px" height="300px">
+	</div>
+	<div id="controlers">
+		<input type="button" id="Audio" value="Audio"> <input
+			type="button" id="Video" value="Video">
+	</div>
+</body>
+</html>
