@@ -3,8 +3,6 @@
 	request.setCharacterEncoding("UTF-8");
 	String userid = request.getParameter("userid");
 	String userpwd = request.getParameter("userpwd");
-	out.print(userid);
-
 %>
 <!DOCTYPE html>
 <html>
@@ -13,12 +11,10 @@
 		<title></title>
 	</head>
 	<body>
-		
-		<%=userid %>
 		<%
 			String id = (String) session.getAttribute("ID");
 		%>
-		<%if(id.equals(userid)){                                                      
+		<%if(id.equals(userid)&&(userid.equals(userpwd))){
 			%>
 			<script >
 				alert("로그인성공");
