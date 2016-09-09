@@ -27,8 +27,49 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+ 	
   	
   </style>
+  <script type="text/javascript">
+  window.onload = function(){
+		var myphotos = Array("images/SH.jpg",
+							 "images/SH2.jpg"
+		                    );
+	 //id prv onclick 이벤트 처리하고 	
+	 var index = 0;		
+	 document.getElementById("prv").onclick = function(){
+		 if(index == 0){
+			 index = myphotos.length;
+		 }
+		 console.log("Before : " + index);
+		 document.getElementById("imgs").src = myphotos[--index];
+	 }
+	 //id next onclick 이벤트 처리하고 
+	 document.getElementById("next").onclick = function(){
+	 	if(++index == myphotos.length){
+	 		index = 0;
+	 	}
+	 	console.log("After : " + index);
+		document.getElementById("imgs").src= myphotos[index]; 
+		}
+	}
+</script>
 </head>
 
 <body>
@@ -87,41 +128,57 @@
     </header>
 	<div class="container">
 		
-  <center><image src="images/SH.jpg" style="width:500px;height:600px;"><br>
-  <h3> 5조 김수현♥</h3></center>
+  <div class="container">
+  	
+  	<h3> 5조 김수현♥</h3>
+    <img src="images/SH.jpg"  class="img-thumbnail" id="imgs" width="500" height="600" alt="이미지"><br>
+   
+   	<div class="row">
+   		<div class="col-sm-1">
+   			<button class="btn" id="prv" style="background-color: #f2dede; color:white;">이전</button>
+   		</div>
+   		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   		<div class="col-sm-3"></div>
+			<button class="btn" id="next"  style="background-color: #f2dede; color:white;">다음</button>
   
+  	</div>
+  	
+  </div>
+  
+ 
+ 
   
   <h2>기본사항</h2>
-   <ul>
-   <table>
+   <div class="container">
+   <table class="table">
    <tr>
-     <td><li>Name   </td><td> :</td><td>   김 수현</li></td>
+     <td>Name   </td><td> :</td><td>   김 수현</td>
    </tr>
    <tr>
-     <td><li>Age    </td><td> :</td><td>   23</li></td>
+     <td>Age    </td><td> :</td><td>   23</td>
    </tr>
    <tr>
-     <td><li>Phone  </td><td> :</td><td>   010-9494-1517</li></td>
+     <td>Phone  </td><td> :</td><td>   010-9494-1517</td>
    </tr>
    <tr>
-     <td><li>E-mail </td><td> :</td><td>  tngusdl6425@naver.com</li></td>
+     <td>E-mail </td><td> :</td><td>  tngusdl6425@naver.com</td>
    </tr>
    <tr>
-     <td><li>Tall   </td><td> :</td><td>   165Cm</li></td>
+     <td>Tall   </td><td> :</td><td>   165Cm</td>
    </tr>
    <tr>
-     <td><li>Blood  </td><td> :</td><td> <em>  AB형</em></li></td>
+     <td>Blood  </td><td> :</td><td> <em>  AB형</em></td>
    </tr>
    <tr>
-     <td><li>Hobby  </td><td> :</td><td>   Travel</li></td>
+     <td>Hobby  </td><td> :</td><td>   Travel</td>
    </tr>
    <tr>
-     <td><li>Address</td><td> :</td><td>경기도 과천시  </li></td>
+     <td>Address</td><td> :</td><td>경기도 과천시  </td>
    </tr> 
      
    </table>
-   </ul>
-  
+
+  </div>
    
 		
 		
