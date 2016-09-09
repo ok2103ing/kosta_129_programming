@@ -27,8 +27,53 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
-  	
+   div.polaroid {
+        width: 30%;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-bottom: 25px;
+   }
+
+   div.container {
+        text-align: left;
+        padding: 10px 20px;
+        font-size: 20px;
+   }
+   
+   #heart { 
+   font-size:60px;
+    position: absolute;
+    opacity:1;
+    z-index:1;
+    -webkit-animation-name: example; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 7s; /* Chrome, Safari, Opera */
+    -webkit-animation-iteration-count: 7; /* Chrome, Safari, Opera */
+    animation-name: example;
+    animation-duration: 7s;
+    animation-iteration-count: 7;
+           }
+   /* Chrome, Safari, Opera */
+@-webkit-keyframes example {
+    0%   {color:pink; left:500px; top:640px;}
+    25%  {color:pink; left:1110px; top:640px;}
+    50%  {color:pink; left:1110px; top:1090px;}
+    75%  {color:pink; left:500px; top:1090px;}
+    100% {color:pink; left:500px; top:640px;}
+}
+
+/* Standard syntax */
+@keyframes example {
+    0%   {color:pink; left:500px; top:640px;}
+    25%  {color:pink; left:1110px; top:640px;}
+    50%  {color:pink; left:1110px; top:1090px;}
+    75%  {color:pink; left:500px; top:1090px;}
+    100% {color:pink; left:500px; top:640px;}
+}
+
+           
   </style>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -49,7 +94,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="EX01.html">Home</a>
+                        <a href="index.html">Home</a>
                     </li>
                     <li>
                         <a href="about.html">About</a>
@@ -85,11 +130,66 @@
             </div>
         </div>
     </header>
-	<div class="container">
-		
-  
-		</div>
-	
+    <article>
+        <div class="container">
+        
+        <font style="font-family:휴먼아미체; font-size:70px;">백승아</font>
+        
+        <div class="polaroid">
+           <img class="img-responsive" src="images/baek.jpg" alt="승아사진" style="margin:auto; width:97%">
+              <div class="container">
+                 <b style="font-size:25px;"> kosta 129기 백승아 <br>
+                                      2015년 4월 11일 꽃놀이중</b>
+                                      &nbsp;&nbsp;
+                      <i class="fa fa-cloud" style="font-size:24px;color:skyblue;"></i>
+                      <i class="fa fa-cloud" style="font-size:36px;color:powderblue;"></i>
+                      <i class="fa fa-cloud" style="font-size:48px;color:skyblue;"></i>
+                      <i class="fa fa-cloud" style="font-size:60px;color:lightblue;"></i>
+                    </div>
+                    </div>
+                    <br><br>
+                    
+                    <i class="fa fa-heart" id="heart"></i>
+                    
+                    <div style="position:absolute;
+                             float:right;
+                             right: 130px;
+                         width: 600px;
+                         top: 670px;
+                         border: 3px solid #73AD21;
+                         border-style: dashed;
+                         padding: 20px;">
+                       나는 백승아입니다
+                       나는 24살입니다
+                       나는 판교에 살고 있습니다
+                       나는 휴대전화 게임을 좋아합니다
+                       나는 어린 남동생이 있습니다
+                       나는 지금 5조입니다
+                        원래는 2조였어요
+                       나는 한국소프트웨어기술진흥협회에서 교육을 듣고 있습니다
+                       나는 안양에서 고등학교를 졸업했습니다
+                       나는 긴 머리카락을 가지고 있습니다
+                       나는 맨 앞자리에 앉아있습니다
+                       나는 이번 주에 생일이었습니다
+                       축하해주셔서 감사합니당
+                       나는 이번에 대학교를 졸업합니다
+                       나는 졸업논문을 작성하고 있습니다
+                       나는 아이폰을 사용하고 있습니다
+                       나는 원래 안경을 씁니다
+                       나는 음악듣는 것을 좋아합니다
+                       나는 가을을 좋아합니다
+                       나는 영화보는 것도 좋아합니다
+                       그런데 티비는 안봐요
+                       나는 노래방에 가는 것을 아주 좋아합니다
+                       나는 볼링장에 가는 것도 아주 좋아합니다
+                       나는 당구장에 가는 것도 아주 좋아합니다
+                       나는 강아지 고양이도 좋아해요
+                       햄스터가 키우고 싶어요
+                       완전 귀여워
+                    </div>
+        </div>
+    </article>
+   
 
     <!-- Footer -->
     <footer>

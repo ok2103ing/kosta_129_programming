@@ -27,56 +27,62 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  <script type="text/javascript">
-	var nowPlayer = ""
-	window.onload = function() {
-		var page = document.getElementById("page");
-		var Audio = document.getElementById("Audio");
-		var Video = document.getElementById("Video");
-		var Youtube = document.getElementById("Youtube");
-		var embed = document.getElementById("embed")
-		Audio.onclick = function() {
-			if (nowPlayer != "Audio") {
-				if (page.hasChildNodes()) removePlayer();
-				page.appendChild(objCreater("Audio.html"));
-				nowPlayer = "Audio"
-			}
-		}
-		Video.onclick = function() {
-			if (nowPlayer != "Video") {
-				if (page.hasChildNodes()) removePlayer();
-				page.appendChild(objCreater("Video.html"));
-				nowPlayer = "Video"
-			}
-		}
-		Youtube.onclick = function() {
-			if (nowPlayer != "Youtube") {
-				if (page.hasChildNodes()) removePlayer();
-				page.appendChild(objCreater("Youtube.html"));
-				nowPlayer = "Youtube"
-			}
-		}
-		embed.onclick = function() {
-			if (nowPlayer != "embed") {
-				if (page.hasChildNodes()) removePlayer();
-				page.appendChild(objCreater("embed.html"));
-				nowPlayer = "embed"
-			}
-		}
-		function objCreater(url) {
-			var obj = document.createElement("object");
-			obj.setAttribute("data", url);
-			obj.setAttribute("width", "500px");
-			obj.setAttribute("height", "600px");
-			obj.setAttribute("style", "border: 3px solid black;");
-			obj.setAttribute("class","well well-sm");
-			
-			return obj;
-		}
-		function removePlayer() {
-			page.removeChild(page.firstChild);
-		}
-	}
+   var nowPlayer = ""
+   window.onload = function() {
+      var page = document.getElementById("page");
+      var Audio = document.getElementById("Audio");
+      var Video = document.getElementById("Video");
+      var Youtube = document.getElementById("Youtube");
+      var embed = document.getElementById("embed")
+      Audio.onclick = function() {
+         if (nowPlayer != "Audio") {
+            if (page.hasChildNodes()) removePlayer();
+            page.appendChild(objCreater("Audio.html"));
+            nowPlayer = "Audio"
+         }
+      }
+      Video.onclick = function() {
+         if (nowPlayer != "Video") {
+            if (page.hasChildNodes()) removePlayer();
+            page.appendChild(objCreater("Video.html"));
+            nowPlayer = "Video"
+         }
+      }
+      Youtube.onclick = function() {
+         if (nowPlayer != "Youtube") {
+            if (page.hasChildNodes()) removePlayer();
+            page.appendChild(objCreater("Youtube.html"));
+            nowPlayer = "Youtube"
+         }
+      }
+      embed.onclick = function() {
+         if (nowPlayer != "embed") {
+            if (page.hasChildNodes()) removePlayer();
+            page.appendChild(objCreater("embed.html"));
+            nowPlayer = "embed"
+         }
+      }
+      function objCreater(url) {
+         var obj = document.createElement("object");
+         obj.setAttribute("data", url);
+         obj.setAttribute("width", "700px");
+         obj.setAttribute("height", "500px");
+         obj.setAttribute("style", "border: 3px solid gray; border-radius:8px; ");
+         obj.setAttribute("class","well well-sm");
+         
+         return obj;
+      }
+      function removePlayer() {
+         page.removeChild(page.firstChild);
+      }
+   }
 </script>
+<style type="text/css">
+   #page { margin: auto;
+         text-align:center;
+         padding: 30px;
+         }
+</style>
 </head>
 
 <body>
@@ -97,7 +103,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="EX01.html">Home</a>
+                        <a href="index.html">Home</a>
                     </li>
                     <li>
                         <a href="about.html">About</a>
@@ -133,56 +139,56 @@
             </div>
         </div>
     </header>
-	
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-				<div class="post-preview">
-					
-					<div class="form-group has-success has-feedback" style="font-family: Lato" >
-						<input type="button" class="btn btn-default" value="Audio" id="Audio" style="width:72pt"> 
-						<input type="button" class="btn btn-default"value="Video" id="Video"style="width:72pt"> 
-						<input type="button"class="btn btn-default" value="Youtube" id="Youtube"style="width:72pt">
-						<input type="button"class="btn btn-default"value="embed" id="embed"style="width:72pt">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+   
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-preview">
+               
+               <div class="form-group has-success has-feedback" style="font-family: Lato" >
+                  <input type="button" class="btn btn-default" value="Audio" id="Audio" style="width:72pt"> 
+                  <input type="button" class="btn btn-default"value="Video" id="Video"style="width:72pt"> 
+                  <input type="button"class="btn btn-default" value="Youtube" id="Youtube"style="width:72pt">
+                  <input type="button"class="btn btn-default"value="embed" id="embed"style="width:72pt">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 
 <div id="page" >
 
 </div>
-	<hr>
+   <hr>
 
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-					<ul class="list-inline text-center">
-						<li><a href="#"> <span class="fa-stack fa-lg"> <i
-									class="fa fa-circle fa-stack-2x"></i> <i
-									class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-							</span>
-						</a></li>
-						<li><a href="#"> <span class="fa-stack fa-lg"> <i
-									class="fa fa-circle fa-stack-2x"></i> <i
-									class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-							</span>
-						</a></li>
-						<li><a href="#"> <span class="fa-stack fa-lg"> <i
-									class="fa fa-circle fa-stack-2x"></i> <i
-									class="fa fa-github fa-stack-1x fa-inverse"></i>
-							</span>
-						</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+               <ul class="list-inline text-center">
+                  <li><a href="#"> <span class="fa-stack fa-lg"> <i
+                           class="fa fa-circle fa-stack-2x"></i> <i
+                           class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                     </span>
+                  </a></li>
+                  <li><a href="#"> <span class="fa-stack fa-lg"> <i
+                           class="fa fa-circle fa-stack-2x"></i> <i
+                           class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                     </span>
+                  </a></li>
+                  <li><a href="#"> <span class="fa-stack fa-lg"> <i
+                           class="fa fa-circle fa-stack-2x"></i> <i
+                           class="fa fa-github fa-stack-1x fa-inverse"></i>
+                     </span>
+                  </a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
 
-	<hr>
+   <hr>
 
-	
+   
 
     <!-- Footer -->
     <footer>
