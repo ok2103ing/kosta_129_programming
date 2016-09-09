@@ -3,6 +3,7 @@
 	request.setCharacterEncoding("UTF-8");
 	String userid = request.getParameter("userid");
 	String userpwd = request.getParameter("userpwd");
+	out.print(userid);
 
 %>
 <!DOCTYPE html>
@@ -13,23 +14,22 @@
 	</head>
 	<body>
 		
-	
+		<%=userid %>
 		<%
 			String id = (String) session.getAttribute("ID");
-		
 		%>
 		<%if(id.equals(userid)){                                                      
 			%>
 			<script >
-			alert("로그인성공");
-			window.close();
+				alert("로그인성공");
+				window.close();
 			</script>
 			<%
 		}else{  
 			%>
 		<script>
-		alert("로그인 실패");
-		history.go(-1);                                    
+			alert("로그인실패");
+			history.go(-1);                                    
 		</script>
 		<%}%>
 	</body>

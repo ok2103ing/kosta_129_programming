@@ -8,7 +8,7 @@
 		
 	    
 	 
-		session.setAttribute("ID", userid); 
+		session.setAttribute("ID",userid); 
 		session.setMaxInactiveInterval(3600);
    	%>
 <!DOCTYPE html>
